@@ -20,7 +20,7 @@
       --transition: 0.32s cubic-bezier(0.4, 0, 0.2, 1);
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body:    'Montserrat', sans-serif;
-      --max-w: 1120px;
+      --max-w: 1400px;
     }
 
     /* ─── Reset & Base ──────────────────────────────────── */
@@ -79,13 +79,14 @@
     }
 
     .nav-links a {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
+      font-size: 0.9rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--teal-dark);
       position: relative;
       transition: color var(--transition);
+      padding: 0.5rem 1rem;
     }
 
     .nav-links a::after {
@@ -205,11 +206,39 @@
     }
 
     /* ─── Hero ──────────────────────────────────────────── */
+    .back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  background: var(--teal-mid);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: all var(--transition);
+  opacity: 0; /* Hidden by default */
+  visibility: hidden;
+  box-shadow: 0 4px 12px rgba(8,76,97,0.2);
+  }
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  }
+
+.back-to-top:hover {
+  background: var(--teal-dark);
+  transform: translateY(-5px);
+  } 
     #home {
       min-height: 100vh;
       display: flex;
-      align-items: center;
-      padding-top: 5rem;
+      align-items: flex-start;
+      padding-top: 25vh;
       position: relative;
       overflow: hidden;
     }
@@ -240,33 +269,69 @@
       position: relative;
       z-index: 2;
     }
+    /* Create the 2-column layout */
+.hero-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between; 
+  width: 100%;
+}
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1rem;
-      background: rgba(86,163,166,0.12);
-      border: 1px solid rgba(86,163,166,0.3);
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--teal-mid);
-      margin-bottom: 1.5rem;
-      animation: fadeUp 0.7s 0.1s both;
-    }
-    .hero-badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--teal-mid);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.5; transform: scale(1.4); }
-    }
+.hero-text-side {
+  text-align: left;
+  padding-right: 10rem; /* Keeps text from touching the image too soon */
+}
+
+.hero-image-side {
+  display: flex;
+  justify-content: flex-end; /* Force the image container to the far right */
+}
+
+/* Make the image look professional */
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin-right: 20px;
+}
+
+.hero-main-img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid rgba(160, 135, 148, 0.3);
+  z-index: 2;
+  position: relative;
+}
+
+/* Decorative Mauve box behind the image */
+.hero-image-accent {
+  position: absolute;
+  top: 20px;
+  right: -20px;
+  width: 100%;
+  height: 100%;
+  background: var(--mauve);
+  opacity: 0.15;
+  border-radius: var(--radius);
+  z-index: 1;
+}
+
+/* Responsive: Stack them on top of each other on mobile */
+@media (max-width: 768px) {
+  .hero-content-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+  .hero-image-container {
+    margin: 0 auto;
+    max-width: 300px;
+  }
+}
 
     .hero-title {
       font-family: var(--font-display);
@@ -294,41 +359,12 @@
       animation: fadeUp 0.7s 0.35s both;
     }
 
-    .hero-cta {
+    /* .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       animation: fadeUp 0.7s 0.5s both;
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem; left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--mauve);
-      animation: fadeIn 1s 1s both;
-    }
-
-    .hero-scroll::after {
-      content: '';
-      width: 1px; height: 40px;
-      background: linear-gradient(to bottom, var(--mauve), transparent);
-      animation: scrollLine 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollLine {
-      0%   { transform: scaleY(0); transform-origin: top; }
-      50%  { transform: scaleY(1); transform-origin: top; }
-      51%  { transform: scaleY(1); transform-origin: bottom; }
-      100% { transform: scaleY(0); transform-origin: bottom; }
-    }
+    } */
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -884,8 +920,9 @@
 
   <!-- ─── Navigation ──────────────────────────────────── -->
   <nav>
-    <a href="#home" class="nav-logo">YN.</a>
+    <a href="#home" class="nav-logo">Samuel Furrer</a>
     <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#github">GitHub</a></li>
@@ -901,20 +938,28 @@
     <div class="hero-bg-ring"></div>
     <div class="hero-bg-ring"></div>
     <div class="container hero-inner">
-      <div class="hero-badge">Available for work</div>
-      <h1 class="hero-title">
+    <div class="hero-content-grid">
+      <div class="hero-text-side">
+          <h1 class="hero-title">
         Creative<br>Developer<br><span>&amp; Designer.</span>
-      </h1>
-      <p class="hero-sub">
-        I build refined digital experiences with a focus on thoughtful
-        interaction, clean code, and aesthetic precision.
-      </p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View My Work</a>
-        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </h1>
+        <p class="hero-sub">
+          I build refined digital experiences with a focus on thoughtful
+          interaction, clean code, and aesthetic precision.
+        </p>
+        <!-- <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div> -->
+      </div>
+      <div class="hero-image-side">
+        <div class="hero-image-container">
+          <img src="https://via.placeholder.com/600x800" alt="Samuel Furrer" class="hero-main-img">
+          <div class="hero-image-accent"></div>
+        </div>
       </div>
     </div>
-    <div class="hero-scroll">Scroll</div>
+  </div>
   </header>
 
   <!-- ─── Projects ────────────────────────────────────── -->
@@ -1229,6 +1274,17 @@
           ? 'var(--teal-mid)' : '';
       });
     }, { passive: true });
+
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTop.classList.add('show');
+    } else {
+      backToTop.classList.remove('show');
+    }
+    });
+
   </script>
 
 </body>
