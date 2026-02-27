@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <style>
     /* ─── CSS Variables ─────────────────────────────────── */
@@ -243,28 +244,6 @@
       overflow: hidden;
     }
 
-    .hero-bg-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(160,135,148,0.18);
-      pointer-events: none;
-    }
-    .hero-bg-ring:nth-child(1) {
-      width: 480px; height: 480px;
-      top: -80px; right: -120px;
-      animation: spin 60s linear infinite;
-    }
-    .hero-bg-ring:nth-child(2) {
-      width: 700px; height: 700px;
-      top: -200px; right: -260px;
-      animation: spin 90s linear infinite reverse;
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-
     .hero-inner {
       position: relative;
       z-index: 2;
@@ -453,6 +432,11 @@
       margin-bottom: 0.5rem;
     }
 
+    .number-flat {
+      font-variant-numeric: lining-nums;
+      display: inline-block; 
+    }
+
     .project-desc {
       font-size: 0.82rem;
       color: rgba(8,76,97,0.65);
@@ -546,15 +530,6 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(to top, rgba(8,76,97,0.06) 0%, transparent 60%);
-    }
-
-    .portrait-accent {
-      position: absolute;
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      background: rgba(86,163,166,0.15);
-      border: 1px solid rgba(86,163,166,0.3);
-      bottom: -20px; right: -20px;
     }
 
     .portrait-label {
@@ -711,31 +686,42 @@
     #contact { background: var(--white); }
 
     .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     .contact-info .section-title { margin-bottom: 1.25rem; }
 
     .contact-body {
-      font-size: 0.92rem;
+      font-size: 1.1rem;
       color: rgba(8,76,97,0.65);
       line-height: 1.8;
       margin-bottom: 2rem;
     }
 
-    .contact-detail {
+   .contact-button {
+      justify-content: flex-start; 
       display: flex;
       align-items: center;
       gap: 0.75rem;
       margin-bottom: 0.75rem;
       font-size: 0.85rem;
       color: var(--teal-dark);
+      text-decoration: none; 
+      transition: opacity 0.2s ease;
+    }
+
+    .contact-button:hover {
+      opacity: 0.7;
+      color: var(--teal-mid);
     }
 
     .contact-detail-icon {
-      width: 36px; height: 36px;
+      width: 45px; height: 45px;
       flex-shrink: 0;
       border-radius: var(--radius);
       background: rgba(86,163,166,0.1);
@@ -743,17 +729,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
 
-    .contact-form {
+    /* .contact-form {
       background: var(--bg);
       padding: 2.5rem;
       border-radius: calc(var(--radius) * 2);
       border: 1px solid rgba(160,135,148,0.2);
-    }
+    } */
 
-    .form-row {
+    /* .form-row {
       display: grid;
       grid-template-columns: 1fr;
       gap: 1.25rem;
@@ -799,7 +785,7 @@
       width: 100%;
       justify-content: center;
       padding: 1rem 2rem;
-    }
+    } */
 
     /* ─── Footer ────────────────────────────────────────── */
     footer {
@@ -923,10 +909,10 @@
     <a href="#home" class="nav-logo">Samuel Furrer</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projekt</a></li>
+      <li><a href="#about">Über mich</a></li>
       <li><a href="#github">GitHub</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact">Kontakt</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -935,17 +921,14 @@
 
   <!-- ─── Hero ────────────────────────────────────────── -->
   <header id="home">
-    <div class="hero-bg-ring"></div>
-    <div class="hero-bg-ring"></div>
     <div class="container hero-inner">
     <div class="hero-content-grid">
       <div class="hero-text-side">
           <h1 class="hero-title">
-        Creative<br>Developer<br><span>&amp; Designer.</span>
+        Hallo<br> zeme
         </h1>
         <p class="hero-sub">
-          I build refined digital experiences with a focus on thoughtful
-          interaction, clean code, and aesthetic precision.
+          Ich baue sehr gern mit elektronische Schaltchreis ume und bringe sie zu Projekt zeme. 
         </p>
         <!-- <div class="hero-cta">
           <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -954,7 +937,7 @@
       </div>
       <div class="hero-image-side">
         <div class="hero-image-container">
-          <img src="https://via.placeholder.com/600x800" alt="Samuel Furrer" class="hero-main-img">
+          <img src="images/mcu.jpg" alt="Samuel Furrer" class="hero-main-img">
           <div class="hero-image-accent"></div>
         </div>
       </div>
@@ -965,25 +948,25 @@
   <!-- ─── Projects ────────────────────────────────────── -->
   <section id="projects">
     <div class="container">
-      <p class="section-label reveal">Selected Work</p>
-      <h2 class="section-title reveal reveal-delay-1">Recent <em>Projects</em></h2>
+      <p class="section-label reveal">fast alles selber gmacht </p>
+      <h2 class="section-title reveal reveal-delay-1">Mini <em>Projekt</em></h2>
       <div class="projects-grid">
 
         <!-- Card 1 -->
         <article class="project-card reveal reveal-delay-1">
           <div class="project-img">
-            <span class="project-img-label">Placeholder Image</span>
+            <img src="images/project1.jpg" alt="Project Alpha Preview" class="project-main-photo">
           </div>
           <div class="project-body">
-            <p class="project-tag">Web App</p>
-            <h3 class="project-title">Project Alpha</h3>
-            <p class="project-desc">A sleek dashboard interface with real-time data visualization and dynamic filtering.</p>
-            <a href="#" class="project-link">View Case Study</a>
+            <p class="project-tag">Microcontoller Build</p>
+            <h3 class="project-title">Project MP3 <span class="number-flat">1.0</span></h3>
+            <p class="project-desc">Dicke grosse MP3 PLayer zum musig chene underwegs spiele mit eigenem Akku und Speicher.</p>
+            <a href="#" class="project-link">Meh dezue</a>
           </div>
         </article>
 
         <!-- Card 2 -->
-        <article class="project-card reveal reveal-delay-2">
+        <!-- <article class="project-card reveal reveal-delay-2">
           <div class="project-img">
             <span class="project-img-label">Placeholder Image</span>
           </div>
@@ -993,10 +976,10 @@
             <p class="project-desc">An intuitive mobile app design for a wellness platform focused on habit tracking.</p>
             <a href="#" class="project-link">View Case Study</a>
           </div>
-        </article>
+        </article> -->
 
         <!-- Card 3 -->
-        <article class="project-card reveal reveal-delay-3">
+        <!-- <article class="project-card reveal reveal-delay-3">
           <div class="project-img">
             <span class="project-img-label">Placeholder Image</span>
           </div>
@@ -1006,10 +989,10 @@
             <p class="project-desc">Complete brand identity and design system for an emerging fintech startup.</p>
             <a href="#" class="project-link">View Case Study</a>
           </div>
-        </article>
+        </article> -->
 
         <!-- Card 4 -->
-        <article class="project-card reveal reveal-delay-1">
+        <!-- <article class="project-card reveal reveal-delay-1">
           <div class="project-img">
             <span class="project-img-label">Placeholder Image</span>
           </div>
@@ -1019,10 +1002,10 @@
             <p class="project-desc">A curated online boutique with a custom CMS, cart system, and responsive storefront.</p>
             <a href="#" class="project-link">View Case Study</a>
           </div>
-        </article>
+        </article> -->
 
         <!-- Card 5 -->
-        <article class="project-card reveal reveal-delay-2">
+        <!-- <article class="project-card reveal reveal-delay-2">
           <div class="project-img">
             <span class="project-img-label">Placeholder Image</span>
           </div>
@@ -1032,10 +1015,10 @@
             <p class="project-desc">A RESTful API service powering a multi-tenant SaaS product with role-based access.</p>
             <a href="#" class="project-link">View Case Study</a>
           </div>
-        </article>
+        </article> -->
 
         <!-- Card 6 -->
-        <article class="project-card reveal reveal-delay-3">
+        <!-- <article class="project-card reveal reveal-delay-3">
           <div class="project-img">
             <span class="project-img-label">Placeholder Image</span>
           </div>
@@ -1045,7 +1028,7 @@
             <p class="project-desc">A lightweight component library built for accessibility and composability.</p>
             <a href="#" class="project-link">View Case Study</a>
           </div>
-        </article>
+        </article> -->
 
       </div>
     </div>
@@ -1057,24 +1040,21 @@
       <div class="about-grid">
         <!-- Text -->
         <div class="about-text">
-          <p class="section-label reveal">Who I Am</p>
-          <h2 class="section-title reveal reveal-delay-1">Crafting <em>experiences</em><br>with intent.</h2>
+          <h2 class="section-title reveal reveal-delay-1">Löte mit Freud.</h2>
           <div class="section-divider reveal reveal-delay-1"></div>
           <p class="about-body reveal reveal-delay-2">
-            I'm a front-end developer and UX designer based in [Your City]. I combine a rigorous eye for visual detail with a deep appreciation for clean, maintainable code — believing the best interfaces are those you barely notice.
+            Ich bin en ETH Student in Zürich. Ich bin im Bachelor für Elektrotechnik und Informationstechnologie und han usegfunde das ich gern Sache zemestelle und das KI alles eifacher macht.
           </p>
           <p class="about-body reveal reveal-delay-2">
-            With over [X] years of experience across startups and agencies, I specialise in translating complex ideas into simple, beautiful products. When I'm not coding, I'm sketching type, reading about systems theory, or hunting for the world's best espresso.
+            Ich bin no gar ned spezialisiert und han au freud an 3D Modelierig und Programmierig. Will alles für mich neu isch bruche ich momentan noch eifach System wo mir s Lebe erliechteret aber will in Zukunft alles chliner, schneller und effizienter mache.
           </p>
           <div class="about-skills reveal reveal-delay-3">
-            <span class="skill-tag">HTML & CSS</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Figma</span>
-            <span class="skill-tag">UI Design</span>
-            <span class="skill-tag">Accessibility</span>
-            <span class="skill-tag">Performance</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">Fusion-360</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">Date Management</span>
+            <span class="skill-tag">MCU IOTs</span>
+            <span class="skill-tag">Lineari Algebra</span>
           </div>
           <div style="margin-top:2rem;" class="reveal reveal-delay-3">
             <a href="#" class="btn btn-outline">Download CV</a>
@@ -1083,10 +1063,8 @@
         <!-- Headshot -->
         <div class="about-portrait reveal reveal-delay-2">
           <div class="portrait-frame">
-            <div class="portrait-placeholder">◉</div>
-            <span class="portrait-label">Your Headshot Here</span>
+            <img src="images/ich.jpg" alt="Samuel Furrer portrait" class="about-img">
           </div>
-          <div class="portrait-accent"></div>
         </div>
       </div>
     </div>
@@ -1096,7 +1074,7 @@
   <section id="github">
     <div class="container">
       <p class="section-label reveal">Open Source</p>
-      <h2 class="section-title reveal reveal-delay-1">Latest <em>Activity</em></h2>
+      <h2 class="section-title reveal reveal-delay-1">Neusti Aktivitäte</h2>
       <div class="github-inner">
 
         <!-- Activity Feed -->
@@ -1106,61 +1084,62 @@
             <span class="activity-dot"></span>
           </div>
           <div class="activity-item">
-            <div class="activity-icon">⬡</div>
-            <div class="activity-info">
-              <p class="activity-name">feat: add dark mode toggle</p>
-              <p class="activity-meta">repo-name · main</p>
-            </div>
-            <span class="activity-time">2h ago</span>
-          </div>
-          <div class="activity-item">
             <div class="activity-icon">◈</div>
             <div class="activity-info">
-              <p class="activity-name">fix: resolve hydration mismatch on SSR</p>
-              <p class="activity-meta">project-beta · fix/ssr</p>
+              <p class="activity-name">Website updates</p>
+              <p class="activity-meta">allgemeini verbesserige html & css</p>
             </div>
-            <span class="activity-time">1d ago</span>
+            <span class="activity-time">27.02.2026</span>
           </div>
           <div class="activity-item">
             <div class="activity-icon">◇</div>
             <div class="activity-info">
-              <p class="activity-name">chore: update dependencies</p>
-              <p class="activity-meta">component-lib · main</p>
+              <p class="activity-name">Neui bilder für Projekt gaddet</p>
+              <p class="activity-meta">folder mit jpg</p>
             </div>
-            <span class="activity-time">3d ago</span>
+            <span class="activity-time">27.02.2026</span>
           </div>
           <div class="activity-item">
-            <div class="activity-icon">○</div>
+            <div class="activity-icon">◈</div>
             <div class="activity-info">
-              <p class="activity-name">docs: improve README examples</p>
-              <p class="activity-meta">open-source-project · docs</p>
+              <p class="activity-name">Index HTML Website</p>
+              <p class="activity-meta">basic html, css & java</p>
             </div>
-            <span class="activity-time">5d ago</span>
+            <span class="activity-time">26.02.2026</span>
+          </div>
+          
+          <div class="activity-item">
+            <div class="activity-icon">⬡</div>
+            <div class="activity-info">
+              <p class="activity-name">Main Code for MP3</p>
+              <p class="activity-meta">c++ code for arduino</p>
+            </div>
+            <span class="activity-time">25.02.2026</span>
           </div>
         </div>
-
+        <!-- icons: ⬡○◈◇ -->
         <!-- Stats + CTA -->
         <div class="reveal reveal-delay-2">
           <div class="github-stats" style="margin-bottom: 2rem;">
             <div class="stat-card">
-              <div class="stat-number">48</div>
+              <div class="stat-number">2</div>
               <div class="stat-label">Repos</div>
             </div>
             <div class="stat-card">
-              <div class="stat-number">1.2k</div>
+              <div class="stat-number">4</div>
               <div class="stat-label">Commits</div>
             </div>
             <div class="stat-card">
-              <div class="stat-number">320</div>
+              <div class="stat-number">0!</div>
               <div class="stat-label">Stars</div>
             </div>
           </div>
           <p style="font-size:0.88rem; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:1.75rem;">
-            I believe in building in the open. All my side projects, experiments, and utilities live on GitHub — feel free to explore, fork, and collaborate.
+            Tun da mal vlt chli meh druf. Es isch ned viil aber ich glaube mer set nie Code extra ned öffentlich mache!
           </p>
           <div class="github-cta">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="btn btn-ghost">
-              ⬡ &nbsp;View GitHub Profile
+            <a href="https://github.com/WheatRidge" target="_blank" rel="noopener" class="btn btn-ghost">
+              <i class="fa-brands fa-github"></i> &nbsp;View GitHub Profile
             </a>
           </div>
         </div>
@@ -1175,47 +1154,28 @@
       <div class="contact-grid">
         <!-- Info -->
         <div class="contact-info">
-          <p class="section-label reveal">Say Hello</p>
-          <h2 class="section-title reveal reveal-delay-1">Let's work<br><em>together.</em></h2>
+          <p class="section-label reveal">Hoi</p>
+          <h2 class="section-title reveal reveal-delay-1">Epis zeme mache?</h2>
           <div class="section-divider reveal reveal-delay-1"></div>
           <p class="contact-body reveal reveal-delay-2">
-            Whether you have a project in mind, a question, or just want to connect — my inbox is always open. I'll do my best to get back to you within 24 hours.
+            Wenn du e cooli Idee hesch oder Frage gsehnis Mail wahrschinlich. Frage sind sehr erwünscht!
           </p>
           <div class="reveal reveal-delay-3">
-            <div class="contact-detail">
+            <a href="mailto:samufurrer@gmail.com" class="contact-button">
               <span class="contact-detail-icon">✉</span>
-              <span>hello@yourname.com</span>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-detail-icon">◎</span>
-              <span>Your City, Country</span>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-detail-icon">⬡</span>
-              <span>linkedin.com/in/yourname</span>
-            </div>
-          </div>
-        </div>
+              <span>samufurrer@gmail.com</span>
+            </a>
 
-        <!-- Form -->
-        <div class="contact-form reveal reveal-delay-2">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="name">Name</label>
-              <input class="form-control" type="text" id="name" name="name" placeholder="Jane Smith" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="email">Email</label>
-              <input class="form-control" type="email" id="email" name="email" placeholder="jane@example.com" />
-            </div>
+            <a href="https://www.google.com/maps/place/Zurich,+Switzerland" target="_blank" class="contact-button">
+              <span class="contact-detail-icon"><i class="fa-solid fa-map-pin"></i></span>
+              <span>Züri, Schwiiz</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/samuel-furrer-884671262/" target="_blank" class="contact-button">
+              <span class="contact-detail-icon"><i class="fa-brands fa-linkedin-in"></i></span>
+              <span>linkedin.com/in/samuel.furrer</span>
+            </a>
           </div>
-          <div class="form-group" style="margin-bottom:1.25rem;">
-            <label class="form-label" for="message">Message</label>
-            <textarea class="form-control" id="message" name="message" placeholder="Tell me about your project..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary form-submit">
-            Send Message &nbsp;→
-          </button>
         </div>
 
       </div>
@@ -1225,12 +1185,12 @@
   <!-- ─── Footer ───────────────────────────────────────── -->
   <footer>
     <div class="container footer-inner">
-      <span class="footer-logo">YN.</span>
-      <p class="footer-copy">© 2025 Your Name. Crafted with care.</p>
+      <span class="footer-logo">Samu</span>
+      <p class="footer-copy">mit müeh.</p>
       <div class="footer-socials">
-        <a href="#" class="social-btn" aria-label="GitHub">⬡</a>
-        <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
-        <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+        <a href="https://github.com/WheatRidge" class="social-btn" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/samuel-furrer-884671262/" class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/wheatr1dge/" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
       </div>
     </div>
   </footer>
