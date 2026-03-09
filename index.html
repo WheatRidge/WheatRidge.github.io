@@ -961,7 +961,7 @@
             <p class="project-tag">Microcontoller Build</p>
             <h3 class="project-title">Project MP3 <span class="number-flat">1.0</span></h3>
             <p class="project-desc">Dicke grosse MP3 PLayer zum musig chene underwegs spiele mit eigenem Akku und Speicher.</p>
-            <a href="#" class="project-link">Meh dezue</a>
+            <a href="project-one.html" class="project-link">Meh dezue</a>
           </div>
         </article>
 
@@ -1057,7 +1057,7 @@
             <span class="skill-tag">Lineari Algebra</span>
           </div>
           <div style="margin-top:2rem;" class="reveal reveal-delay-3">
-            <a href="#" class="btn btn-outline">Download CV</a>
+            <a href="images/Lebenslauf_Samuel.pdf" download="Samuel_Furrer_CV" class="btn btn-outline">Download CV</a>
           </div>
         </div>
         <!-- Headshot -->
@@ -1224,14 +1224,27 @@
     // Active nav highlight on scroll
     const sections = document.querySelectorAll('header[id], section[id]');
     const navItems = document.querySelectorAll('.nav-links a');
+
     window.addEventListener('scroll', () => {
       let current = '';
-      sections.forEach(sec => {
-        if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
-      });
+
+      const isBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50;
+  
+      if (isBottom) {
+        current = 'contact'; 
+      } else {
+        sections.forEach(sec => {
+          // Using -150 to make it feel a bit more responsive
+          if (window.scrollY >= sec.offsetTop - 150) {
+            current = sec.id;
+          }
+        });
+      }
+
+      // This part MUST be outside the if/else to work!
       navItems.forEach(link => {
-        link.style.color = link.getAttribute('href') === '#' + current
-          ? 'var(--teal-mid)' : '';
+        const href = link.getAttribute('href');
+        link.style.color = href === '#' + current ? 'var(--teal-mid)' : '';
       });
     }, { passive: true });
 
