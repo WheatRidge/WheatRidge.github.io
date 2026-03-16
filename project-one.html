@@ -122,7 +122,7 @@
     section { position: relative; z-index: 1; padding: 5rem 0; }
 
     .section-label {
-      font-size: 0.7rem; font-weight: 600;
+      font-size: 0.95rem; font-weight: 700;
       letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--mauve); margin-bottom: 0;
     }
@@ -213,7 +213,7 @@
     /* Challenge / Solution */
     .cs-grid {
       display: grid; grid-template-columns: 1fr;
-      border: 1px solid rgba(160,135,148,0.2);
+      border: 2px solid var(--teal-mid);
       border-radius: calc(var(--radius) * 1.5);
       overflow: hidden;
       animation: fadeUp 0.7s 0.4s both;
@@ -222,17 +222,17 @@
     .cs-block { padding: 2rem 2.25rem; position: relative; }
     .cs-block::before {
       content: ''; position: absolute; top: 0; left: 0;
-      width: 3px; height: 100%;
-    }
+      width: 2px; height: 100%;
+    } 
     .cs-block.challenge {
       background: var(--white);/*rgba(160,135,148,0.04);*/
       border-bottom: 1px solid rgba(160,135,148,0.2);
     }
-    .cs-block.challenge::before { background: var(--mauve); }
+     /* .cs-block.challenge::before { background: var(--mauve); }  */
     .cs-block.solution  {  
       background: var(--white);
     }    /*background: rgba(86,163,166,0.04);*/
-    .cs-block.solution::before  { background: var(--teal-mid); }
+     .cs-block.solution::before  { background: var(--teal-mid); } 
 
     .cs-label {
       font-size: 0.65rem; font-weight: 700;
@@ -247,13 +247,14 @@
     ══════════════════════════════════════════════════════ */
     #gallery { background: var(--white); }
 
-    .gallery-stack { display: flex; flex-direction: column; gap: 1.5rem; }
+    .gallery-stack { display: flex; flex-direction: column; gap: 3.5rem; }
 
     .gallery-item {
       border-radius: calc(var(--radius) * 1.5);
       overflow: hidden;
-      border: 1px solid rgba(160,135,148,0.18);
-      background: var(--white);
+      border: 2px solid var(--teal-mid); 
+  
+  background: var(--bg);
       transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
       cursor: zoom-in;
     }
@@ -268,9 +269,9 @@
     .gallery-item:nth-child(1) .gallery-photo,
     .gallery-item:nth-child(1) .gallery-placeholder { aspect-ratio: 16 / 9; }
     .gallery-item:nth-child(2) .gallery-photo,
-    .gallery-item:nth-child(2) .gallery-placeholder { aspect-ratio: 4  / 3; }
+    .gallery-item:nth-child(2) .gallery-placeholder { aspect-ratio: 16 / 9; }
     .gallery-item:nth-child(3) .gallery-photo,
-    .gallery-item:nth-child(3) .gallery-placeholder { aspect-ratio: 16 / 9; }
+    .gallery-item:nth-child(3) .gallery-placeholder { aspect-ratio: 3 / 2; }
     .gallery-item:nth-child(4) .gallery-photo,
     .gallery-item:nth-child(4) .gallery-placeholder { aspect-ratio: 3  / 2; }
 
@@ -288,8 +289,8 @@
       border-top: 1px solid rgba(160,135,148,0.13);
       background: var(--white);
     }
-    .gallery-caption-text { font-size: 0.75rem; color: rgba(8,76,97,0.5); }
-    .gallery-num { font-family: var(--font-display); font-style: italic; font-size: 0.95rem; color: var(--mauve); }
+    .gallery-caption-text { font-size: 0.9rem; color: rgba(8,76,97,0.75);font-weight: 500; }
+    .gallery-num { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; color: var(--mauve); }
 
     /* Lightbox */
     .lightbox {
@@ -303,7 +304,14 @@
       box-shadow: 0 40px 80px rgba(0,0,0,0.35);
       animation: zoomIn 0.22s ease both;
     }
-    .lightbox-img { display: block; width: 90vw; max-width: 1000px; max-height: 80vh; object-fit: contain; }
+    .lightbox-img { 
+      display: block; 
+      width: auto;       /* Changed from 90vw so it shrinks to fit vertical images */
+      height: auto;      /* Ensures the proportions stay perfect */
+      max-width: 90vw; 
+      max-height: 80vh; 
+      object-fit: contain; 
+    }
     .lightbox-placeholder {
       width: 90vw; max-width: 1000px; aspect-ratio: 16/9;
       background: linear-gradient(135deg, rgba(86,163,166,0.15) 0%, rgba(160,135,148,0.15) 100%);
@@ -332,7 +340,7 @@
     .tech-categories { display: flex; flex-direction: column; gap: 1rem; }
 
     .tech-cat-card {
-      border: 1px solid rgba(160,135,148,0.18);
+      border: 2px solid var(--teal-mid);
       border-radius: calc(var(--radius) * 1.5);
       overflow: hidden; background: var(--white);
       transition: border-color var(--transition), box-shadow var(--transition);
@@ -525,7 +533,7 @@
 
     @media (max-width: 600px) {
       nav { padding: 1rem 1.25rem; }
-      .back-btn span:first-child { display: none; } /* hide text, show only circle on small screens */
+      .back-btn span:last-child { display: none; } /* hide text, show only circle on small screens */
       .project-hero { padding-top: calc(68px + 2.5rem); }
       .cs-block { padding: 1.5rem 1.25rem; }
       .tech-cat-header { padding: 1.25rem; }
@@ -542,8 +550,8 @@
   <nav>
     <a href="index.html" class="nav-logo">Samuel Furrer</a>
     <a href="index.html" class="back-btn" aria-label="Zrugg zur Hauptseite">
-      <span>Zrugg</span>
       <span class="arrow-circle">←</span>
+      <span>Zrugg</span>
     </a>
     <div class="nav-progress" id="progress"></div>
   </nav>
@@ -557,7 +565,7 @@
       <div class="project-meta-row">
         <span class="meta-pill type">Microcontroller Build</span>
         <span class="meta-pill year">2025</span>
-        <span class="meta-pill year">Case Study</span>
+        <span class="meta-pill year">Embedded System</span>
       </div>
 
       <h1 class="project-hero-title">
@@ -604,49 +612,33 @@
       <div class="gallery-stack">
 
         <div class="gallery-item reveal reveal-delay-1" data-index="0">
-          <!-- Swap in: <img src="images/project1.jpg" alt="MP3 Player Übersicht" class="gallery-photo"> -->
-          <div class="gallery-placeholder">
-            <span class="placeholder-icon">◈</span>
-            <span class="placeholder-text">images/project1.jpg — Übersicht</span>
-          </div>
+          <img src="images/bothhorizontal.jpeg" alt="MP3 Player PCB und Case" class="gallery-photo">
           <div class="gallery-caption">
-            <span class="gallery-caption-text">Kompletti Übersicht vom fertigen Player</span>
+            <span class="gallery-caption-text">S'fertige Board nebed em 3D-druckte Case.</span>
             <span class="gallery-num">01</span>
           </div>
         </div>
 
         <div class="gallery-item reveal reveal-delay-1" data-index="1">
-          <!-- <img src="images/mp3-platine.jpg" alt="Platine" class="gallery-photo"> -->
-          <div class="gallery-placeholder">
-            <span class="placeholder-icon">⬡</span>
-            <span class="placeholder-text">images/mp3-platine.jpg — Platine</span>
-          </div>
+          <img src="images/progress1.jpeg" alt="Breadboard Prototyping" class="gallery-photo">
           <div class="gallery-caption">
-            <span class="gallery-caption-text">Platine mit DFPlayer-Mini und Verdratig</span>
+            <span class="gallery-caption-text">De Afang uf em Breadboard zum d'Software und Komponente z'teste.</span>
             <span class="gallery-num">02</span>
           </div>
         </div>
 
         <div class="gallery-item reveal reveal-delay-1" data-index="2">
-          <!-- <img src="images/mp3-akku.jpg" alt="Akku" class="gallery-photo"> -->
-          <div class="gallery-placeholder">
-            <span class="placeholder-icon">◇</span>
-            <span class="placeholder-text">images/mp3-akku.jpg — Akku</span>
-          </div>
+          <img src="images/onlypcb.jpeg" alt="Custom Purple PCB" class="gallery-photo">
           <div class="gallery-caption">
-            <span class="gallery-caption-text">18650 Akku mit Lade- und Schutzschaltkreis</span>
+            <span class="gallery-caption-text">Mini eigeti Leiterplatte, designt für de perfekt Fit.</span>
             <span class="gallery-num">03</span>
           </div>
         </div>
 
         <div class="gallery-item reveal reveal-delay-1" data-index="3">
-          <!-- <img src="images/mp3-gehaeuse.jpg" alt="Ghäuse" class="gallery-photo"> -->
-          <div class="gallery-placeholder">
-            <span class="placeholder-icon">○</span>
-            <span class="placeholder-text">images/mp3-gehaeuse.jpg — Ghäuse</span>
-          </div>
+          <img src="images/songliste.jpeg" alt="OLED Screen UI" class="gallery-photo">
           <div class="gallery-caption">
-            <span class="gallery-caption-text">3D-druckt Ghäuse mit Tastenanordnig</span>
+            <span class="gallery-caption-text">S'fertige Menü uf em OLED-Screen, programmiert in C++.</span>
             <span class="gallery-num">04</span>
           </div>
         </div>
@@ -678,11 +670,11 @@
               </button>
             </div>
             <div class="tech-badges">
-              <span class="skill-tag teal"><span class="badge-dot"></span>Arduino Nano</span>
+              <span class="skill-tag teal"><span class="badge-dot"></span>Arduino Nano ESP 32</span>
               <span class="skill-tag teal"><span class="badge-dot"></span>JQ8400TF</span>
               <span class="skill-tag teal"><span class="badge-dot"></span>LiPo 3000mAh</span>
               <span class="skill-tag teal"><span class="badge-dot"></span>BMS 2S LAdemodul</span>
-              <span class="skill-tag teal"><span class="badge-dot"></span>SD-Karte-Reader</span>
+              <span class="skill-tag teal"><span class="badge-dot"></span>Step-Down Buck Converter</span>
               <span class="skill-tag teal"><span class="badge-dot"></span>OLED Screen</span>
             </div>
           </div>
@@ -693,51 +685,61 @@
 
                 <div class="product-item">
                   <div>
-                    <p class="product-name">Arduino Nano</p>
-                    <p class="product-desc">Kompakter Microcontroller uf ATmega328P Basis. Steuert de DFPlayer, liest Taster und managed d Logik vom ganzen Gerät.</p>
+                    <p class="product-name">Arduino Nano ESP32</p>
+                    <p class="product-desc">En fasch zu guete Microcontroller für alles z koordiniere. Bechunt und schickt alli Date ume/witer.</p>
                   </div>
-                  <a href="https://store.arduino.cc/products/arduino-nano" target="_blank" rel="noopener" class="product-link">
+                  <a href="https://store.arduino.cc/products/nano-esp32" target="_blank" rel="noopener" class="product-link">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Arduino
                   </a>
                 </div>
 
                 <div class="product-item">
                   <div>
-                    <p class="product-name">DFPlayer Mini</p>
-                    <p class="product-desc">Mini MP3-Modul vo DFRobot. Liest direkt vo SD-Karte, het en eigete DAC und cha en Lautsprecher direkt triibe.</p>
+                    <p class="product-name">JQ8400-TF MP3 Modul</p>
+                    <p class="product-desc">En Audio decoder für d Musig schickt de Ton direkt witer und handlet s Play/Pause und so.</p>
                   </div>
-                  <a href="https://www.dfrobot.com/product-1121.html" target="_blank" rel="noopener" class="product-link">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> DFRobot
+                  <a href="https://sparks.gogo.co.nz/catalog/Microcontrollers-255/PeripheralsModules-273/MP3-Players-186/Micro-SD-MP3-Player-JQ8400-TF---Easy-Arduino-Library-877.html" target="_blank" rel="noopener" class="product-link">
+                    <i class="fa-solid fa-book"></i> Sparks 
                   </a>
                 </div>
 
                 <div class="product-item">
                   <div>
-                    <p class="product-name">18650 Li-Ion Akku</p>
-                    <p class="product-desc">Wiederaufladbari 3.7 V Zelle mit ~3000 mAh. Sorgt für gueti Laufzit und isch eifach uszwechsle.</p>
+                    <p class="product-name">3000mAh LiPo Akku</p>
+                    <p class="product-desc">LiPo Akku wo viil zu gross isch für mis Grät. Ned gnueg informiert ...</p>
                   </div>
-                  <a href="https://www.conrad.ch/de/search.html?search=18650+akku" target="_blank" rel="noopener" class="product-link">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Conrad
+                  <a href="https://www.amazon.de/dp/B08V11Z88Q" target="_blank" rel="noopener" class="product-link">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Amazon 
                   </a>
                 </div>
 
                 <div class="product-item">
                   <div>
-                    <p class="product-name">TP4056 Lademodul</p>
-                    <p class="product-desc">Linearer Li-Ion Ladecontroller mit Überladeschuz. Ladet via Micro-USB und het e integrierti Schutzschaltung.</p>
+                    <p class="product-name">BMS 2S Lademodul</p>
+                    <p class="product-desc">S Batterie Managmen Modul. Isch wichtig zum de Akku sicher uflade vor es paar Sache. Speziel ah dem isch es chan 2 Akku balanciere das si epe immer glich ufglade werdet.</p>
                   </div>
-                  <a href="https://datasheet.lcsc.com/lcsc/1809301717_TPOWER-TP4056_C383078.pdf" target="_blank" rel="noopener" class="product-link">
-                    <i class="fa-solid fa-file-pdf"></i> Datasheet
+                  <a href="https://www.amazon.fr/EMSea-Panneaux-Protection-Chargeur-Batteries/dp/B0D2GTX9FJ?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=A2LFPSXWSOBTR#averageCustomerReviewsAnchor" target="_blank" rel="noopener" class="product-link">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Amazon
                   </a>
                 </div>
 
                 <div class="product-item">
                   <div>
-                    <p class="product-name">3W Lautsprecher (8 Ω)</p>
-                    <p class="product-desc">Kleiner Breitbandlautsprecher. Direkt aagschlosse am DFPlayer-Ausgang ohni externe Verstärker nötig.</p>
+                    <p class="product-name">Step-Down Buck Converter</p>
+                    <p class="product-desc">Ich muss vo mine ~7.4 V abe uf 5 V cho für s MP3 Modul. Für das muss es ebe au extra stabil si.</p>
                   </div>
-                  <a href="https://www.reichelt.com/de/de/shop/search?SEARCH=3W+8ohm+lautsprecher" target="_blank" rel="noopener" class="product-link">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Reichelt
+                  <a href="https://www.galaxus.ch/de/s1/product/dfrobot-dc-dc-multi-output-step-down-buck-converter-33v5v9v12v-entwicklungsboard-kit-24938044" target="_blank" rel="noopener" class="product-link">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Galaxus
+                  </a>
+                </div>
+
+                <div class="product-item">
+                  <div>
+                    <p class="product-name">128x128 OLED Display</p>
+                    <p class="product-desc">Mis Display fürs Projekt. Zeigt s ganze Menü zb. Akkustand und Song ah.</p>
+                  </div>
+                  <a href="https://www.amazon.de/Hailege-SH1107-Display-Module-128x128/dp/B0CJY2Q4SY?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&shipTo=CH&language=de_DE" target="_blank" rel="noopener" class="product-link">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Amazon
                   </a>
                 </div>
 
@@ -779,20 +781,20 @@
 
                 <div class="product-item">
                   <div>
-                    <p class="product-name">DFRobotDFPlayerMini Library</p>
-                    <p class="product-desc">Offizielle Arduino-Bibliothek vo DFRobot. Ermöglicht eifachi Steuerig vom DFPlayer via UART mit wenig Code.</p>
+                    <p class="product-name">JQ8400-TF Library</p>
+                    <p class="product-desc">Bibliothek für JQ8400-TF. Het mir alles viil vereifacht zum mit dem JQ8400-TF z kommuniziere mit mim Arduino.</p>
                   </div>
-                  <a href="https://github.com/DFRobot/DFRobotDFPlayerMini" target="_blank" rel="noopener" class="product-link">
+                  <a href="https://github.com/sleemanj/JQ8400_Serial" target="_blank" rel="noopener" class="product-link">
                     <i class="fa-brands fa-github"></i> GitHub
                   </a>
                 </div>
 
                 <div class="product-item">
                   <div>
-                    <p class="product-name">C++ (Arduino Dialect)</p>
-                    <p class="product-desc">Arduino-spezifischs C++ mit setup() / loop() Struktur. Ideal für Embedded-Projekte mit direktem Hardware-Zugriff.</p>
+                    <p class="product-name">I<sup>2</sup>C</p>
+                    <p class="product-desc">E art zum Date übermittle. Min Screen brucht die Art vo Dateüberträgig.</p>
                   </div>
-                  <a href="https://www.arduino.cc/reference/en/" target="_blank" rel="noopener" class="product-link">
+                  <a href="https://docs.arduino.cc/learn/communication/wire/" target="_blank" rel="noopener" class="product-link">
                     <i class="fa-solid fa-book"></i> Referenz
                   </a>
                 </div>
@@ -815,7 +817,7 @@
               <span class="skill-tag"><span class="badge-dot"></span>Fusion 360</span>
               <span class="skill-tag"><span class="badge-dot"></span>FDM 3D-Druck</span>
               <span class="skill-tag"><span class="badge-dot"></span>Handlötig</span>
-              <span class="skill-tag"><span class="badge-dot"></span>Lochrasterplatine</span>
+              <span class="skill-tag"><span class="badge-dot"></span>Custom PCB</span>
             </div>
           </div>
 
@@ -826,30 +828,30 @@
                 <div class="product-item">
                   <div>
                     <p class="product-name">Autodesk Fusion 360</p>
-                    <p class="product-desc">3D-CAD Tool für s Ghäuse-Design. Parametrischs Modelliere und direkter STL-Export für de Drucker.</p>
+                    <p class="product-desc">Mis 3D Modelierig Tool zum mis Gehüs z designe.</p>
                   </div>
-                  <a href="https://www.autodesk.com/products/fusion-360/overview" target="_blank" rel="noopener" class="product-link">
+                  <a href="https://www.autodesk.com/ch-de/products/fusion-360/overview" target="_blank" rel="noopener" class="product-link">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Autodesk
                   </a>
                 </div>
 
                 <div class="product-item">
                   <div>
-                    <p class="product-name">FDM 3D-Druck (PLA)</p>
-                    <p class="product-desc">Fused Deposition Modeling mit PLA-Filament. Günstig, eifach z drucke und guet gnue für s Ghäuse vo emem Elektronikprojekt.</p>
+                    <p class="product-name">3D-Drucker</p>
+                    <p class="product-desc">Zum s Ghüs us drucke muss mer en 3D-Drucker ha oder das Online mache lah.</p>
                   </div>
-                  <a href="https://www.prusa3d.com/de/" target="_blank" rel="noopener" class="product-link">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Prusa
+                  <a href="https://bambulab.com/de-de" target="_blank" rel="noopener" class="product-link">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Bambulab
                   </a>
                 </div>
 
                 <div class="product-item">
                   <div>
-                    <p class="product-name">Lochrasterplatine</p>
-                    <p class="product-desc">Universalplatine für Prototypen ohni PCB-Fertigung. Ideal für Einzel-Projekte wo kein eigeti Leiterplatte bruche.</p>
+                    <p class="product-name">PCB</p>
+                    <p class="product-desc">Selbst agfertigts PCB, wo ich all mini Footprints druf tha han und dene bstellt han. Sehr guet zum alles schön phalte.</p>
                   </div>
-                  <a href="https://www.reichelt.com/de/de/shop/search?SEARCH=lochrasterplatine" target="_blank" rel="noopener" class="product-link">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Reichelt
+                  <a href="https://jlcpcb.com/" target="_blank" rel="noopener" class="product-link">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> JCL PCB
                   </a>
                 </div>
 
