@@ -143,7 +143,7 @@
     }
 
     .section-title {
-      font-family: var(--font-display);
+      font-family: var(--font-body);
       font-size: clamp(2.2rem, 5vw, 3.5rem);
       font-weight: 300;
       line-height: 1.15;
@@ -152,7 +152,7 @@
     }
 
     .section-title em {
-      font-style: italic;
+      font-style: Montserrat;
       color: var(--teal-mid);
     }
 
@@ -317,7 +317,7 @@
 }
 
     .hero-title {
-      font-family: var(--font-display);
+      font-family: var(--font-body);
       font-size: clamp(3.2rem, 9vw, 7rem);
       font-weight: 300;
       line-height: 1.05;
@@ -329,7 +329,7 @@
 
     .hero-title span {
       display: block;
-      font-style: italic;
+      font-style: Montserrat;
       color: var(--teal-mid);
     }
 
@@ -428,7 +428,7 @@
     }
 
     .project-title {
-      font-family: var(--font-display);
+      font-family: var(--font-body);
       font-size: 1.4rem;
       font-weight: 600;
       line-height: 1.2;
@@ -878,6 +878,11 @@
       .hero-text-side {
         padding-right: 0; 
       }
+      #home, .hero-section { 
+        height: auto; 
+        min-height: 100vh; 
+        padding-bottom: 5rem;
+      }
     }
 
     @media (min-width: 641px) {
@@ -950,7 +955,6 @@
       <div class="hero-image-side">
         <div class="hero-image-container">
           <img src="images/mcu.jpg" alt="Samuel Furrer" class="hero-main-img">
-          <div class="hero-image-accent"></div>
         </div>
       </div>
     </div>
